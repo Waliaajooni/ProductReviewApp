@@ -1,0 +1,35 @@
+<nav class="navbar">
+    <div class= "container-fluid">
+        <img class = "icon" src = "https://cdn0.iconfinder.com/data/icons/most-usable-logos/120/Amazon-512.png">
+        <a class="navbar-brand" (click)="home()">Mobile EShop</a>
+        
+        <form class="d-flex" ngNativeValidate (ngSubmit)="onSearch()">
+            <input class="form-control me-2 searchfield" [disabled]="service.isLoggedIn() == false"id="sprodname" name="sprodname" [(ngModel)]="sname" placeholder="Search" aria-label="Search"
+                required oninvalid="this.setCustomValidity('Name must be entered')">
+            <button [disabled]="service.isLoggedIn() == false" class="btn btn-warning" type="submit">Search</button>
+        </form>
+
+        <form class = "loginout" *ngIf="service.isLoggedIn() == true" (ngSubmit)="logout()">
+            <button type = "submit" class="btn btn-warning">Logout</button>
+        </form>
+
+        <form class = "loginout" *ngIf="service.isLoggedIn() == false" (ngSubmit)="login()">
+            <button type = "submit" class="btn btn-warning">Login</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+            <div class="card text-center">
+                <div class="card-body">
+                    <img class="shoeimg" src="{{product.imageUrl}}" (click)="toReview(product)"/>
+                    <div class = "content">
+                        <h5 class= "desc">{{product.prodName}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

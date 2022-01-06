@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <img
+                src="https://us.123rf.com/450wm/robuart/robuart1911/robuart191100144/133438387-smiling-woman-shopaholic-choosing-new-high-heels-female-sitting-on-chair-and-looking-at-mirror-lady-.jpg?ver=6">
+        </div>
+        <div class="col-7">
+            <div class="card text-center mt-3">
+                <div class="container">
+                    <div class="card-title mt-2">
+                        <h3>Register</h3>
+                    </div>
+                    <form #Registerform = "ngForm" (ngSubmit)="registerUser()" class="card-body">
+                        <small class = "text-danger">{{msg}}</small>
+                        <div class="form-group row mt-2">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name"
+                                    placeholder="Enter your  Name" required [(ngModel)]="user.usrname" #name = "ngModel"
+                                    [class.is-invalid]="name.invalid && name.touched">
+                                    <small class= "text-danger" [class.d-none] = "name.valid || name.untouched">Name Field is required</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-3">
+                            <label for="email" class="col-sm-2 col-form-label">Email Id</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Enter Email Address" required #email="ngModel" [(ngModel)]="user.usrmail"
+                                    [class.is-invalid]="email.invalid && email.touched"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+                                <div *ngIf="email.errors && (email.invalid && email.touched)">
+                                    <small class="text-danger" *ngIf="email.errors?.['required']">Email Id is required
+                                        field</small>
+                                    <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter Valid Email
+                                        Address</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mt-3">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Enter your Password" required
+                                    [(ngModel)]="user.usrpassword" #password="ngModel" 
+                                [class.is-invalid]="password.invalid && password.touched">
+                                <small class= "text-danger" [class.d-none] = "password.valid || password.untouched">Password is required field</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-3">
+                            <div class="col-sm-13">
+                                <button type="submit" class="submitbtn btn btn-primary">Register</button>
+                            </div>
+                        </div>
+                        <p class="logbtn mt-3">Existing User? <a [routerLink]="['/users/login']">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<nav class="navbar">
+    <div class= "container-fluid">
+        <img class = "icon" src = "https://cdn0.iconfinder.com/data/icons/most-usable-logos/120/Amazon-512.png">
+        <a class="navbar-brand" (click)="homepage()">Mobile EShop</a>
+        
+        <form class="d-flex" ngNativeValidate>
+            <input class="form-control me-2 searchfield" [disabled]="service.isLoggedIn() == false"id="sprodname" name="sprodname" [(ngModel)]="sname" placeholder="Search" aria-label="Search"
+                required oninvalid="this.setCustomValidity('Name must be entered')">
+            <button [disabled]="service.isLoggedIn() == false" class="btn btn-warning" type="submit">Search</button>
+        </form>
+
+        <form class = "loginout" *ngIf="service.isLoggedIn() == true" (ngSubmit)="logout()">
+            <button type = "submit" class="btn btn-warning">Logout</button>
+        </form>
+
+        <form class = "loginout" *ngIf="service.isLoggedIn() == false" (ngSubmit)="login()">
+            <button type = "submit" class="btn btn-warning">Login</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <img class="shoeimg" src="{{prodct.imageUrl}}">
+            
+            <div class="row">
+                <ngb-rating [max]="5" [(rate)]="avgRate" [readonly]="true"></ngb-rating>
+            </div>
+
+            <h3>Description : </h3>
+            <div class= "row">
+                <div class = "col lheads">
+                    <ul>
+                        <p><li>Product Name :</li></p>
+                        <p><li>Product Model :</li></p>
+                        <p><li>Product Brand :</li></p>
+                        <p><li>Product Storage :</li></p>
+                    </ul>
+                </div>
+                <div class = "col respectivecol">
+                    <ul>
+                        <p>{{prodct.prodName}}</p>
+                        <p>{{prodct.prodModel}}</p>
+                        <p>{{prodct.prodBrand}}</p>
+                        <p>{{prodct.prodStorage}}</p>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" *ngIf="service.isLoggedIn() == true">
+                <form #reviewForm = "ngForm" class= "addrev container" (ngSubmit) = "addReviewOfProduct()">
+                    <div class="mb-3">
+                        <label for="ratestars" class="form-label">Ratings</label>
+                        <ngb-rating id = "ratestars" class="addstar" [max]="5" [(rate)]="currentRate" [readonly]="false"  name = "rating" [(ngModel)]="revw.rating" #rating = "ngModel"></ngb-rating>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="reviewtextarea" class="form-label">Review</label>
+                        <textarea class="form-control" id="reviewtextarea" rows="3" name = "review" [(ngModel)]="revw.review" #review = "ngModel"></textarea>
+                    </div>
+                    
+                    <div class="text-center"><button type = "submit" class = "btn btn-warning">Add Review</button></div>
+                </form>
+            </div>
+
+            <div class="row mt-3">
+                <h4>Reviews</h4>
+            </div>
+
+            <div *ngFor="let rev of prodct.reviews">
+                <ngb-rating [max]="5" [(rate)]="rev.rating" [readonly]="true"></ngb-rating>
+                <p>{{rev.review}}</p>
+            </div>
+        </div>
+    </div>
+</div>

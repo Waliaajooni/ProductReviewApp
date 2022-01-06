@@ -1,0 +1,55 @@
+.navbar {
+    background: black;
+}
+
+.icon {
+    width: 50px;
+}
+
+.searchfield {
+    width: 700px;
+}
+
+.hello {
+    color: white;
+}
+
+
+.navbar .navbar-brand {
+    color: #ffff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.lheads {
+    font-weight: bold;
+}
+
+.addrev {
+    padding: 5px;
+}
+
+.shoeimg {
+    width: 300px;
+}
+
+.respectivecol {
+    list-style: disc
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.mb-3 {
+    margin: 4%;
+}
+
+.addstar {
+    margin-left: 25%;
+}
+
+ngb-rating {
+    color: #ffcc00;
+    font-size: 30px;
+}

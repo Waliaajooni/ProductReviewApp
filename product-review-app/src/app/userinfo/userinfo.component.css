@@ -1,0 +1,65 @@
+.navbar {
+    background: black;
+}
+
+.hhcard-title {
+    background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 9%, hsla(216, 41%, 79%, 1) 95%);
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.icon {
+    width: 50px;
+}
+
+.searchfield {
+    width: 700px;
+}
+
+.hello {
+    color: white;
+}
+
+.content {
+    margin-top: 3px;
+}
+
+.navbar .navbar-brand {
+    color: #ffff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-item .nav-link {
+    color: #ffff;
+    font-weight: 500;
+}
+
+
+.desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.shoeimg {
+    width: 15rem;
+    object-fit: cover contain;
+    height: 50vh;
+}
+
+.shoeimg:hover {
+    -moz-box-shadow: 0 0 10px rgb(172, 170, 170);
+    -webkit-box-shadow: 0 0 10px rgb(172, 170, 170);
+    box-shadow: 0 0 10px rgb(172, 170, 170);
+}
+
+.searchbtn {
+    background: linear-gradient(90deg, hsla(186, 100%, 69%, 1) 0%, hsla(152, 100%, 50%, 1) 100%);
+}
+
+.card {
+    height: 370px;
+    margin-bottom: 20px;
+}
